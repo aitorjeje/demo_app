@@ -1,0 +1,237 @@
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (62.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (78.1ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20110116160404)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110116160404')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2011-01-16 17:05:33) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 1719ms (View: 1719, DB: 0) | 200 OK [http://localhost/Users]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2011-01-16 17:06:04) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/Users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2011-01-16 17:08:23) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"F5EbS/1n5gJkDdOfYzDBY3P0MGkqWQXC7L0YiKqBDkE=", "user"=>{"name"=>"aitor", "email"=>"aitorjeje@gmail.com"}}
+  [4;35;1mUser Create (15.6ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at", "email") VALUES('aitor', '2011-01-16 16:08:23', '2011-01-16 16:08:23', 'aitorjeje@gmail.com')[0m
+Redirected to http://localhost:3000/users/1
+Completed in 188ms (DB: 16) | 302 Found [http://localhost/users]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2011-01-16 17:08:23) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 62ms (View: 47, DB: 0) | 200 OK [http://localhost/users/1]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2011-01-16 17:33:12) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/users
+Rendering users/edit
+Completed in 125ms (View: 94, DB: 0) | 200 OK [http://localhost/users/1/edit]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20110116160404)
+Migrating to CreateMicroposts (20110116164419)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE TABLE "microposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110116164419')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("microposts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing MicropostsController#index (for 127.0.0.1 at 2011-01-16 17:44:52) [GET]
+  [4;36;1mMicropost Load (0.0ms)[0m   [0;1mSELECT * FROM "microposts" [0m
+Rendering template within layouts/microposts
+Rendering microposts/index
+Completed in 31ms (View: 31, DB: 0) | 200 OK [http://localhost/microposts]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-16 17:46:29) [GET]
+
+NameError (uninitialized constant ProductsController):
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (78.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2011-01-16 17:46:41) [GET]
+
+ActionController::RoutingError (No route matches "/pattata" with {:method=>:get}):
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Dev/SW/Languages/ruby-1.8.7/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing MicropostsController#index (for 127.0.0.1 at 2011-01-16 17:46:50) [GET]
+  [4;35;1mMicropost Load (0.0ms)[0m   [0mSELECT * FROM "microposts" [0m
+Rendering template within layouts/microposts
+Rendering microposts/index
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://localhost/microposts]
+
+
+Processing MicropostsController#new (for 127.0.0.1 at 2011-01-16 17:47:52) [GET]
+Rendering template within layouts/microposts
+Rendering microposts/new
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/microposts/new]
+
+
+Processing MicropostsController#create (for 127.0.0.1 at 2011-01-16 17:47:58) [POST]
+  Parameters: {"commit"=>"Create", "micropost"=>{"user_id"=>"1", "content"=>"firstt micorpost"}, "authenticity_token"=>"F5EbS/1n5gJkDdOfYzDBY3P0MGkqWQXC7L0YiKqBDkE="}
+  [4;36;1mMicropost Create (0.0ms)[0m   [0;1mINSERT INTO "microposts" ("created_at", "updated_at", "user_id", "content") VALUES('2011-01-16 16:47:58', '2011-01-16 16:47:58', 1, 'firstt micorpost')[0m
+Redirected to http://localhost:3000/microposts/1
+Completed in 156ms (DB: 0) | 302 Found [http://localhost/microposts]
+
+
+Processing MicropostsController#show (for 127.0.0.1 at 2011-01-16 17:47:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMicropost Load (0.0ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+Rendering template within layouts/microposts
+Rendering microposts/show
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://localhost/microposts/1]
+
+
+Processing MicropostsController#index (for 127.0.0.1 at 2011-01-16 17:49:07) [GET]
+  [4;36;1mMicropost Load (0.0ms)[0m   [0;1mSELECT * FROM "microposts" [0m
+Rendering template within layouts/microposts
+Rendering microposts/index
+Completed in 47ms (View: 31, DB: 0) | 200 OK [http://localhost/microposts]
+
+
+Processing MicropostsController#new (for 127.0.0.1 at 2011-01-16 17:49:09) [GET]
+Rendering template within layouts/microposts
+Rendering microposts/new
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://localhost/microposts/new]
+
+
+Processing MicropostsController#create (for 127.0.0.1 at 2011-01-16 17:49:15) [POST]
+  Parameters: {"commit"=>"Create", "micropost"=>{"user_id"=>"1", "content"=>"second micropost"}, "authenticity_token"=>"F5EbS/1n5gJkDdOfYzDBY3P0MGkqWQXC7L0YiKqBDkE="}
+  [4;35;1mMicropost Create (15.6ms)[0m   [0mINSERT INTO "microposts" ("created_at", "updated_at", "user_id", "content") VALUES('2011-01-16 16:49:15', '2011-01-16 16:49:15', 1, 'second micropost')[0m
+Redirected to http://localhost:3000/microposts/2
+Completed in 188ms (DB: 16) | 302 Found [http://localhost/microposts]
+
+
+Processing MicropostsController#show (for 127.0.0.1 at 2011-01-16 17:49:15) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mMicropost Load (0.0ms)[0m   [0;1mSELECT * FROM "microposts" WHERE ("microposts"."id" = 2) [0m
+Rendering template within layouts/microposts
+Rendering microposts/show
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://localhost/microposts/2]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2011-01-16 17:49:23) [GET]
+  [4;35;1mUser Load (15.6ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 47ms (View: 16, DB: 16) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2011-01-16 17:49:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/users/1]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2011-01-16 17:49:31) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+
+
+Processing MicropostsController#index (for 127.0.0.1 at 2011-01-16 17:54:14) [GET]
+  [4;36;1mMicropost Load (0.0ms)[0m   [0;1mSELECT * FROM "microposts" [0m
+Rendering template within layouts/microposts
+Rendering microposts/index
+Completed in 125ms (View: 109, DB: 0) | 200 OK [http://localhost/microposts]
+
+
+Processing MicropostsController#edit (for 127.0.0.1 at 2011-01-16 17:54:17) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mMicropost Load (0.0ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts"."id" = 2) [0m
+Rendering template within layouts/microposts
+Rendering microposts/edit
+Completed in 47ms (View: 31, DB: 0) | 200 OK [http://localhost/microposts/2/edit]
+
+
+Processing MicropostsController#update (for 127.0.0.1 at 2011-01-16 17:54:31) [PUT]
+  Parameters: {"commit"=>"Update", "micropost"=>{"user_id"=>"1", "content"=>"second micropost añlskdfj ñalksj ñalksjd ñalksj dfñalksj faskjfñalksjdf ñaklsdjñalkesj ñlkavmñ alks 140 caracteres o máaaaaaaaaaaaaaaaaaaaaaaas s ya qte digo"}, "authenticity_token"=>"F5EbS/1n5gJkDdOfYzDBY3P0MGkqWQXC7L0YiKqBDkE=", "id"=>"2"}
+  [4;36;1mMicropost Load (0.0ms)[0m   [0;1mSELECT * FROM "microposts" WHERE ("microposts"."id" = 2) [0m
+Rendering template within layouts/microposts
+Rendering microposts/edit
+Completed in 78ms (View: 47, DB: 0) | 200 OK [http://localhost/microposts/2]
+
+
+Processing MicropostsController#update (for 127.0.0.1 at 2011-01-16 17:55:13) [PUT]
+  Parameters: {"commit"=>"Update", "micropost"=>{"user_id"=>"1", "content"=>"second micropost añlskdfj ñalksj ñalksjd ñalksj dfñalksj faskjfñalksjdf ñaklsdjñalkesj ñlkavmñ alks 140 caracteres o máaaaaaaaaaaaaaaaaaaaaaaas s ya qte digo fffffffffffffffffffff fd sssssssssssssssssssssssssssssfg  egergregergerg"}, "authenticity_token"=>"F5EbS/1n5gJkDdOfYzDBY3P0MGkqWQXC7L0YiKqBDkE=", "id"=>"2"}
+  [4;35;1mMicropost Load (0.0ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts"."id" = 2) [0m
+Rendering template within layouts/microposts
+Rendering microposts/edit
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/microposts/2]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+  [4;35;1mUser Load (15.6ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+  [4;36;1mMicropost Load (0.0ms)[0m   [0;1mSELECT * FROM "microposts" WHERE ("microposts".user_id = 1) [0m
